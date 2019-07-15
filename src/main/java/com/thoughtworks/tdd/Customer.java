@@ -7,6 +7,16 @@ public class Customer {
     private Ticket ticket;
     private Car car;
     ParkingBoy aBoy;
+    String errorMessage="";
+
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
+    }
+
     public void setCar(Car car) {
         this.car = car;
     }
@@ -36,10 +46,13 @@ public boolean parking(){
             this.car.setParking(true);
             return true;
         }
+        this.setErrorMessage(aBoy.getMessage());
         return false;
 }
 public boolean fetchMyCar(){
-        if(aBoy.fetchYourCar(this.ticket)){
+        boolean successFetch=aBoy.fetchYourCar(this.ticket);
+        this.setErrorMessage(aBoy.getMessage());
+        if(successFetch){
             car.setParking(false);
             return true;
         }
@@ -48,6 +61,5 @@ public boolean fetchMyCar(){
     public Customer(Car car){
         this.car=car;
     }
-
 
 }
