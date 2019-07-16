@@ -6,10 +6,10 @@ public class Ticket {
     public Ticket(int id){
         this.id=id;
     }
-    public Ticket(int id, Car car){
+    public Ticket(int id, Car acar){
         this.id=id;
 
-        this.car=car;
+        this.car=acar;
     }
 
     public Car getCar() {
